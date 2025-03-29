@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bundle & Save</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f8f8f8;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: auto;
+        }
+        .option {
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        .option.selected {
+            border-color: green;
+            background: #f0fff0;
+        }
+        .size-colour {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        select {
+            padding: 5px;
+            width: 100%;
+        }
+        .add-to-cart {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        .shipping {
+            color: green;
+            margin-top: 10px;
+        }
+        .details {
+            display: none;
+            margin-top: 10px;
+        }
+        .option.selected .details {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>Bundle & Save</h3>
+        
+        <div class="option selected" data-price="195" onclick="selectOption(this, 195)">
+            <input type="radio" name="bundle" checked>
+            <strong>1 Pair</strong> - DKK 195.00 <span>50% OFF</span>
+            <div class="details">
+                <div class="size-colour">
+                    <select>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                    </select>
+                    <select>
+                        <option>Colour</option>
+                    </select>
+                </div>
+                <div class="size-colour">
+                    <select>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                    </select>
+                    <select>
+                        <option>Colour</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <div class="option" data-price="345" onclick="selectOption(this, 345)">
+            <input type="radio" name="bundle">
+            <strong>2 Pair</strong> - DKK 345.00 <span>40% OFF</span>
+            <div class="details">
+                <div class="size-colour">
+                    <select>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                    </select>
+                    <select>
+                        <option>Colour</option>
+                    </select>
+                </div>
+                <div class="size-colour">
+                    <select>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                    </select>
+                    <select>
+                        <option>Colour</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <div class="option" data-price="528" onclick="selectOption(this, 528)">
+            <input type="radio" name="bundle">
+            <strong>3 Pair</strong> - DKK 528.00 <span>60% OFF</span>
+            <div class="details">
+                <div class="size-colour">
+                    <select>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                    </select>
+                    <select>
+                        <option>Colour</option>
+                    </select>
+                </div>
+                <div class="size-colour">
+                    <select>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                    </select>
+                    <select>
+                        <option>Colour</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <p class="shipping">Free 2 Day Shipping</p>
+        <p><strong>Total: DKK <span id="total">195.00</span></strong></p>
+        <button class="add-to-cart">+ Add to Cart</button>
+    </div>
+
+    <script>
+        function selectOption(element, price) {
+            document.querySelectorAll('.option').forEach(option => {
+                option.classList.remove('selected');
+                option.querySelector('input').checked = false;
+            });
+            element.classList.add('selected');
+            element.querySelector('input').checked = true;
+            document.getElementById('total').innerText = price.toFixed(2);
+        }
+    </script>
+</body>
+</html>
